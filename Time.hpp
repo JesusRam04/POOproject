@@ -84,8 +84,7 @@ int Time::elapsedTime(Time t)
             elapsed += m - minute;
         }
     }
-    timeElapsed = ceil(elapsed/60);
-    return timeElapsed;
+    return elapsed;
 }
 
 bool Time::operator>(Time t)

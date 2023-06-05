@@ -29,7 +29,7 @@ CustomerParkingCard::CustomerParkingCard(int id, string name) : ParkingCard(id, 
 
 int CustomerParkingCard::calculateHoursToPay(Time t1, Time t2)
 {
-    int elapsed = t1.elapsedTime(t2);
+    int elapsed = ceil(t1.elapsedTime(t2)/60.0);
     return elapsed;
 }
 
