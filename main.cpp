@@ -12,8 +12,8 @@ int main()
 {
     int elapsed;
     // Test Time class
-    Time t1(10, 40);
-    Time t2(15, 1);
+    Time t1(8, 46);
+    Time t2(15, 11);
     elapsed = t1.elapsedTime(t2);
     cout<<"Elapsed time: "<<elapsed<<endl;  
     // Test ParkingRegister class
