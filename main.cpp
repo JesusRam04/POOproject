@@ -7,7 +7,11 @@ using namespace std;
 
 int main()
 {
-    int occupiedSpots = 0;
+    int elapsed;
+    // Test Time class
+    Time t1(10, 30);
+    Time t2(11, 30);
+    elapsed = t1.elapsedTime(t2);
+    cout<<"Elapsed time: "<<elapsed<<endl;  
     
-    return 0;
 }
