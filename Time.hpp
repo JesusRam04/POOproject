@@ -65,11 +65,12 @@ int Time::elapsedTime(Time t)
         elapsed = (hour - h) * 60;
         if (minute > m)
         {
-            elapsed += minute - m;
+            elapsed += (minute - m);
         }
         else
         {
-            elapsed += m - minute;
+            elapsed += (minute+60) - m;
+            elapsed -= 60;
         }
     }
     else
@@ -77,7 +78,8 @@ int Time::elapsedTime(Time t)
         elapsed = (h - hour) * 60;
         if (minute > m)
         {
-            elapsed += minute - m;
+            elapsed += (m+60) - minute;
+            elapsed -= 60;
         }
         else
         {
