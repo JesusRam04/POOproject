@@ -33,9 +33,9 @@ int main()
     // Test Customer class
     CustomerParkingCard cpc(1234, "Mary");
     cpc.print();
-    hours = cpc.calculateHoursToPay(t1, t2);
+    hours = cpc.calculateHoursToPay(t2, t1);
     cout<<"Hours to pay: "<<hours<<endl;
-    payment = cpc.calculatePayment(t1, t2, 20);
+    payment = cpc.calculatePayment(t2, t1, 20);
     cout<<"Payment: "<<payment<<endl;
 
     // Test Supplier class
