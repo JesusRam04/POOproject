@@ -10,9 +10,62 @@ using namespace std;
 #include "CustomerParkingCard.hpp"
 #include "SupplierParkingCard.hpp"
 
+void readFromFile(ParkingCard *listOfCards[], int &numOfCards)
+{
+    ifstream inFile;
+    inFile.open("C:/Users/jesus/Documents/GitHub/POO/POOproject/ParkingCards.txt");
+    if (!inFile)
+    {
+        cout << "Unable to open file";
+        exit(1); // terminate with error
+    }
+    string type;
+    int id;
+    string name;
+    string company;
+    string store;
+
+    while(inFile >> type >> id >> name >> store)
+    {
+        if (type == "E")
+        {
+            EmployeeParkingCard *epc = new EmployeeParkingCard(id, name, company);
+            listOfCards[id] = epc;
+            numOfCards++;
+        }
+        else if (type == "C")
+        {
+            CustomerParkingCard *cpc = new CustomerParkingCard(id, name);
+            listOfCards[id] = cpc;
+            numOfCards++;
+
+        }
+        else if (type == "S")
+        {
+            SupplierParkingCard *spc = new SupplierParkingCard(id, name, company);
+            listOfCards[id] = spc;
+            numOfCards++;
+
+        }
+    }
+    inFile.close();
+
+}
+
+
 int main()
 {
+    //Read from file
     ParkingCard *listOfCards[50];
+    int numOfCards = 0;
+    readFromFile(listOfCards, numOfCards);
+    for (int i = 0; i < numOfCards; i++)
+    {
+        listOfCards[i]->print();
+    }
+
+
+
     int elapsed;
     // Test Time class
     Time t1(8, 46);
