@@ -1,5 +1,7 @@
 #include <iostream>
 #include <math.h>
+#include <string>
+#include <fstream>
 using namespace std;
 
 #include "Time.hpp"
@@ -10,6 +12,7 @@ using namespace std;
 
 int main()
 {
+    ParkingCard *listOfCards[50];
     int elapsed;
     // Test Time class
     Time t1(8, 46);
