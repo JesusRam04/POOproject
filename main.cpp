@@ -50,6 +50,18 @@ void readFromFile(ParkingCard *listOfCards[], int &numOfCards){
     inFile.close();
 }
 
+int findCard(ParkingCard *listOfCards[], int numOfCards, int id)
+{
+    for (int i = 0; i < numOfCards; i++)
+    {
+        if (listOfCards[i]->getCardID() == id)
+        {
+            return i;
+        }
+    }
+    return -1;
+}
+
 
 int main()
 {
@@ -105,7 +117,7 @@ int main()
                     }
                     if (foundID==false)
                     {
-                        cout<<"Invalid ID"<<endl;
+                        cout<<"Invalid ID, please enter a valid one"<<endl;
                     }
 
                 }while (foundID==false);
@@ -123,7 +135,7 @@ int main()
                     }
                     else
                     {
-                        cout<<"Invalid hour"<<endl;
+                        cout<<"Invalid hour, please enter an hour\n between 8 and 22"<<endl;
                     }
 
                 }while (checkHour==false);
@@ -138,7 +150,7 @@ int main()
                     }
                     else
                     {
-                        cout<<"Invalid minutes"<<endl;
+                        cout<<"Invalid minutes, please enter a minute\n between 0 and 59"<<endl;
                     }
                 }while (checkMinutes==false);
                 listRegister[numOfRegisters] = new ParkingRegister(checkID, tEntrance);
@@ -147,31 +159,114 @@ int main()
             }
             case 'b':
             {
-                cout<<"b"<<endl;
+                int checkID;
+                bool foundID=false;
+                Time exitTime;
+                Time entryTime;
+                int index;
+                do{
+                    cout<<"Enter ID: ";
+                    cin>>checkID;
+                    for (int i=0; i < numOfRegisters; i++)
+                    {
+                        if (listRegister[i]->getCardID() == checkID)
+                        {
+                            foundID = true;
+                            entryTime = listRegister[i]->getEntryTime();
+                            index = i;
+                            break;
+                        }
+                    }
+                    if (foundID==false)
+                    {
+                        cout<<"Invalid ID, please enter a valid one"<<endl;
+                    }
+
+                }while (foundID==false);
+
+                cout<<"Introduce time of exit: "<<endl;
+                int hour, minute;
+                bool checkTime=false;
+                bool checkHour=false;
+                bool checkMinutes=false;
+                do{
+                    do{
+                        cout<<"Enter Hour: ";
+                        cin>>hour;
+                        if (hour>=8 && hour<=22)
+                        {
+                            checkHour=true;
+                        }
+                        else
+                        {
+                            cout<<"Invalid hour, please enter an hour\n between 8 and 22"<<endl;
+                        }
+
+                    }while (checkHour==false);
+                    do{
+                        cout<<"Enter Minutes: ";
+                        cin>>minute;
+                        if (minute>=0 && minute<=59)
+                        {
+                            checkMinutes=true;
+                        }
+                        else
+                        {
+                            cout<<"Invalid minutes, please enter a minute\n between 0 and 59"<<endl;
+                        }
+                    }while (checkMinutes==false);
+                    exitTime.setHour(hour);
+                    exitTime.setMinute(minute);
+                    if (exitTime>entryTime)
+                    {
+                        checkTime=true;
+                        exitTime.setHour(hour);
+                    }
+                    else
+                    {
+                        cout<<"Invalid time, please enter a time\n greater than the entry time"<<endl;
+                    }
+                }while (checkTime==false);
+                int cardID = findCard(listOfCards, numOfCards, checkID);
+                int hrsToPay = listOfCards[cardID]->calculateHoursToPay(entryTime, exitTime);
+                double amToPay = listOfCards[cardID]->calculatePayment(entryTime, exitTime, todaysRate);
+                cout<<"*****************************************"<<endl;
+                cout<<"Exit Ticket"<<endl;
+                listRegister[index]->print();
+                cout<<"Exit time: ";
+                exitTime.print();
+                cout<<"Hours to pay: "<<hrsToPay<<endl;
+                cout<<"Amount to pay: "<<amToPay<<endl;
+                cout<<"Have a nice day!"<<endl;
+                cout<<"*****************************************"<<endl;
                 break;
             }
             case 'c':
             {
-                cout<<"c"<<endl;
+                for (int i=0; i<numOfRegisters; i++)
+                {
+                    int cardID = listRegister[i]->getCardID();
+                    int index = findCard(listOfCards, numOfCards, cardID);
+                    cout<<"*****************************************"<<endl;
+                    cout<<"Lot: "<<i+1<<endl;
+                    listOfCards[index]->print();
+                    listRegister[i]->print();
+                }
                 break;
             }
             case 'd':
             {
-                cout<<"d"<<endl;
+                for (int i=0; i<numOfCards; i++)
+                {
+                    cout<<"*****************************************"<<endl;
+                    cout<<"Card: "<<i+1<<endl;
+                    listOfCards[i]->print();
+                }
                 break;
             }
 
         }
     } while (option != 'e');
-
-
-
-    //cout<<"numbers of cards: "<<numOfCards<<endl;
-
-    //for (int i = 0; i < numOfCards; i++)
-    //{
-    //    listOfCards[i]->print();
-    //}
 
     return 0;
 
