@@ -12,7 +12,7 @@ using namespace std;
 
 void readFromFile(ParkingCard *listOfCards[], int &numOfCards){
     ifstream inFile;
-    inFile.open("C:/Users/jesus/Documents/GitHub/POO/POOproject/ParkingCards.txt");
+    inFile.open("ParkingCards.txt");
     if (!inFile)
     {
         cout << "Unable to open file";
