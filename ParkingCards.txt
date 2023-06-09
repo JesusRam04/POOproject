@@ -4,3 +4,6 @@ S 503 Rose Office_Depot
 C 204 Hellen
 S 505 Tim Navisco
 S 506 Mary Home_Depot
+C 205 Jesus
+C 601 Daniela
+S 602 Oscar Sams

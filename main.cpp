@@ -117,7 +117,7 @@ int main()
                     }
                     if (foundID==false)
                     {
-                        cout<<"Invalid ID, please enter a valid one"<<endl;
+                        cout<<"Invalid ID, please enter a valid one\n"<<endl;
                     }
 
                 }while (foundID==false);
@@ -135,7 +135,7 @@ int main()
                     }
                     else
                     {
-                        cout<<"Invalid hour, please enter an hour\nbetween 8 and 22"<<endl;
+                        cout<<"Invalid hour, please enter an hour\nbetween 8 and 22\n"<<endl;
                     }
 
                 }while (checkHour==false);
@@ -150,7 +150,7 @@ int main()
                     }
                     else
                     {
-                        cout<<"Invalid minutes, please enter a minute\nbetween 0 and 59"<<endl;
+                        cout<<"Invalid minutes, please enter a minute\nbetween 0 and 59\n"<<endl;
                     }
                 }while (checkMinutes==false);
                 listRegister[numOfRegisters] = new ParkingRegister(checkID, tEntrance);
@@ -179,7 +179,7 @@ int main()
                     }
                     if (foundID==false)
                     {
-                        cout<<"Invalid ID, please enter a valid one"<<endl;
+                        cout<<"Invalid ID, please enter a valid one\n"<<endl;
                     }
 
                 }while (foundID==false);
@@ -199,7 +199,7 @@ int main()
                         }
                         else
                         {
-                            cout<<"Invalid hour, please enter an hour\nbetween 8 and 22"<<endl;
+                            cout<<"Invalid hour, please enter an hour\nbetween 8 and 22\n"<<endl;
                         }
 
                     }while (checkHour==false);
@@ -212,7 +212,7 @@ int main()
                         }
                         else
                         {
-                            cout<<"Invalid minutes, please enter a minute\nbetween 0 and 59"<<endl;
+                            cout<<"Invalid minutes, please enter a minute\nbetween 0 and 59\n"<<endl;
                         }
                     }while (checkMinutes==false);
                     exitTime.setHour(hour);
@@ -224,7 +224,7 @@ int main()
                     }
                     else
                     {
-                        cout<<"Invalid time, please enter a time\ngreater than the entry time"<<endl;
+                        cout<<"Invalid time, please enter a time\ngreater than the entry time\n"<<endl;
                     }
                 }while (checkTime==false);
                 int cardID = findCard(listOfCards, numOfCards, checkID);
